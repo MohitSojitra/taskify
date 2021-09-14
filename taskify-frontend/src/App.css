@@ -1,0 +1,28 @@
+* {
+  margin: "0px";
+  padding: "0px";
+  box-sizing: border-box;
+}
+.App {
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(115, 221, 54);
+  border-radius: 8px;
+
+  /* background-image: -webkit-gradient(
+    linear,
+    0 0,
+    0 100%,
+    color-stop(0.5, rgba(255, 255, 255, 0.2)),
+    color-stop(0.5, transparent),
+    to(transparent)
+  ); */
+}

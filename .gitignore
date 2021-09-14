@@ -1,0 +1,3 @@
+./taskify-backend/node_modules
+./taskify-backend/dist
+./taskify-frontend/node_modules
