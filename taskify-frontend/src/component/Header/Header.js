@@ -8,6 +8,7 @@ import CreateBoard from '../CreateBoard/CreateBoard'
 import CustomAvatar from '../Avatar/CustomAvatar'
 import {Api} from '../../utils/Api'
 import {isLogin} from '../../utils/localstorage'
+import {TextElement} from '../TextElement'
 
 function Header(props) {
   const classes = useStyles()
@@ -34,8 +35,10 @@ function Header(props) {
           </Link>
         </Toolbar>
         <Toolbar>
-          <Link to="/">
-            <MacaronLogo />
+          <Link to="/" style={{textDecoration: 'none'}}>
+            <TextElement textStyle={{color: colors.lightBlue}}>
+              Taskify
+            </TextElement>
           </Link>
         </Toolbar>
         <Box
