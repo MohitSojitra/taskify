@@ -15,6 +15,10 @@ import {
   FETCH_MYBOARDS,
   FETCH_INDIVIDUAL_BOARD,
   SET_COLUMNS,
+  ADD_MEMBER_IN_BOARD,
+  REMOVE_MEMBER_IN_BOARD,
+  SET_INITIAL_STATE_BOARD_REDUCER,
+  SET_INITIAL_STATE_FETCH_REDUCER,
 } from '../types'
 
 // export const addItemInContainer = (dispatch, data) => {
@@ -145,3 +149,10 @@ export const setColumns = createFunc(SET_COLUMNS)
 // Fetch dispature
 export const fetchMyBoards = createFunc(FETCH_MYBOARDS)
 export const fetchIndividualBoard = createFunc(FETCH_INDIVIDUAL_BOARD)
+
+//member
+export const addMemberInBoard = createFunc(ADD_MEMBER_IN_BOARD)
+export const removeMemberInBoard = createFunc(REMOVE_MEMBER_IN_BOARD)
+
+export const setInitialStateBoard = createFunc(SET_INITIAL_STATE_BOARD_REDUCER)
+export const setInitialStateFetch = createFunc(SET_INITIAL_STATE_FETCH_REDUCER)

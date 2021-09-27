@@ -23,6 +23,7 @@ export const setBoardsInStore = async (
     return
   }
   const res = JSON.parse(data)
+  console.log({res: res})
   setBoards(dispatch, res.board)
 
   fetchMyBoards(dispatch)

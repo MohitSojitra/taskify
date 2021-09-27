@@ -3,7 +3,7 @@ const devConfig = {
 }
 
 const prodConfig = {
-  baseURL: 'Your Backend Live url ',
+  baseURL: 'https://macron-backend.herokuapp.com',
 }
 
 export const config = devConfig

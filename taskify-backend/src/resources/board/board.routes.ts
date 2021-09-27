@@ -8,6 +8,7 @@ import {
   getBoardById,
   getMyBoards,
   me,
+  removeMemberInBoard,
   updateBoardById,
 } from './board.controller'
 import {verifyBoardOwner} from './board.middleware'
@@ -22,6 +23,7 @@ router
   .delete([verifyBoardOwner], deleteBoardById)
 
 router.route('/:id/addMember').post([verifyBoardOwner], addMemberInBoard)
+router.route('/:id/removeMember').post([verifyBoardOwner], removeMemberInBoard)
 
 router
   .route('/:boardId/changeColumbPosition')

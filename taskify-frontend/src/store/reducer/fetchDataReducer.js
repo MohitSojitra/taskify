@@ -8,7 +8,11 @@
   }
    */
 
-import {FETCH_INDIVIDUAL_BOARD, FETCH_MYBOARDS} from '../types'
+import {
+  FETCH_INDIVIDUAL_BOARD,
+  FETCH_MYBOARDS,
+  SET_INITIAL_STATE_FETCH_REDUCER,
+} from '../types'
 
 const initState = {
   myBoards: false,
@@ -27,6 +31,8 @@ const fetchReducer = (state = initState, action) => {
       return {
         ...state,
       }
+    case SET_INITIAL_STATE_FETCH_REDUCER:
+      return {}
     default:
       return state
   }

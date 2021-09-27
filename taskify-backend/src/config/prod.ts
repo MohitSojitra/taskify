@@ -3,5 +3,5 @@ export const config = {
     jwt: 'taskify',
     jwtExp: '2d',
   },
-  dbUrl: 'Your live mongodb database url',
+  dbUrl: 'Your Live Mongodb url',
 }

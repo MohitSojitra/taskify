@@ -2,6 +2,7 @@ import {
   ADD_BOARD,
   ADD_CONTAINER,
   ADD_ITEM,
+  ADD_MEMBER_IN_BOARD,
   CHANGE_COLUMN,
   CHANGE_ITEM_POSITION_IN_SAME_CONTAINER,
   CHNAGE_ITEM_POSITION_IN_DIFFERNT_CONTAINER,
@@ -11,8 +12,10 @@ import {
   EDIT_BOARD,
   EDIT_CONTAINER,
   EDIT_ITEM,
+  REMOVE_MEMBER_IN_BOARD,
   SET_BOARDS,
   SET_COLUMNS,
+  SET_INITIAL_STATE_BOARD_REDUCER,
 } from '../types'
 import {v4 as uuidv4} from 'uuid'
 import {setItem} from '../../utils/localstorage'
@@ -275,6 +278,15 @@ const boardReducer = (state = initState, action) => {
 
       setItem({...state})
       return {...state}
+
+    case ADD_MEMBER_IN_BOARD:
+    case REMOVE_MEMBER_IN_BOARD:
+      payload = action.payload
+      state[payload.boardId].member = payload.member
+      return {...state}
+
+    case SET_INITIAL_STATE_BOARD_REDUCER:
+      return {}
 
     default:
       setItem(state)

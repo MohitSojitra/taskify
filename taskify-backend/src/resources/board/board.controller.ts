@@ -57,7 +57,8 @@ export const getMyBoards = async (
   res: express.Response,
 ) => {
   try {
-    const board = await Board.aggregate([
+    console.log({user: req['user']._id})
+    const board: any = await Board.aggregate([
       {
         $unwind: {path: '$member'},
       },
@@ -67,21 +68,39 @@ export const getMyBoards = async (
       {
         $group: {
           _id: '$_id',
-          bgColor: {$first: '$bgColor'},
-          name: {$first: '$name'},
-          createdBy: {$first: '$createdBy'},
-          member: {$push: '$member'},
-          columnArr: {$first: '$columns'},
-          createdAt: {$first: '$createdAt'},
-          updatedAt: {$first: '$updatedAt'},
+        },
+      },
+      {
+        $lookup: {
+          from: 'boards',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'boards',
+        },
+      },
+      {
+        $project: {
+          boards: 1,
+          _id: 0,
+        },
+      },
+      {
+        $unwind: {
+          path: '$boards',
         },
       },
     ])
 
-    const result = await Board.populate(board, [
+    // console.log({board: board})
+    const resData = board.map(r => {
+      return {...r.boards, columnArr: r.boards.columns}
+    })
+
+    const result: any = await Board.populate(resData, [
       {path: 'member.userId'},
       {path: 'createdBy'},
     ])
+
     res.status(200).send({board: result})
     return
   } catch (e) {
@@ -161,7 +180,11 @@ export const addMemberInBoard = async (
       )
     }
 
+    console.log({invitedUser})
     const findMatch = await Board.aggregate([
+      {
+        $match: {_id: Types.ObjectId(req.params.id)},
+      },
       {
         $unwind: {path: '$member'},
       },
@@ -169,7 +192,7 @@ export const addMemberInBoard = async (
         $match: {'member.userId': Types.ObjectId(invitedUser._id)},
       },
     ])
-
+    console.log({findMatch})
     if (findMatch.length > 0) {
       sendResponseError(500, 'User already added in board ', res)
       return
@@ -180,8 +203,41 @@ export const addMemberInBoard = async (
       {$push: {member: {userId: invitedUser._id}}},
       {new: true},
     )
+    const result: any = await Board.populate(board, [{path: 'member.userId'}])
 
-    res.send({board})
+    res.send({member: result.member, message: 'Sucessfully add member'})
+    return
+  } catch (e) {
+    console.log(e)
+    sendResponseError(
+      500,
+      'Faied to fecth boared in database. please try again',
+      res,
+    )
+    return
+  }
+}
+
+export const removeMemberInBoard = async (
+  req: express.Request,
+  res: express.Response,
+) => {
+  //TODO: check email is register in website
+  //TODO: check already not added invited user
+  //TODO: add user in board
+
+  const {memberUserId} = req.body
+
+  try {
+    const board = await Board.findByIdAndUpdate(
+      req.params.id,
+      {$pull: {member: {userId: Types.ObjectId(memberUserId)}}},
+      {upsert: false, new: true},
+    )
+
+    const result: any = await Board.populate(board, [{path: 'member.userId'}])
+
+    res.send({member: result.member, message: 'Sucessfully delete member'})
     return
   } catch (e) {
     console.log(e)

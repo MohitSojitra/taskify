@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react";
 
 function MacaronLogo(props) {
   return (
@@ -39,7 +39,7 @@ function MacaronLogo(props) {
         fill="#9999F8"
       />
     </svg>
-  )
+  );
 }
 
-export default MacaronLogo
+export default MacaronLogo;

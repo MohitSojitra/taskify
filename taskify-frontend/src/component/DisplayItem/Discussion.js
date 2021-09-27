@@ -35,9 +35,8 @@ const DiscussionDisplay = memo(({comment, handleCommentDelete}) => {
     [comment.createdAt],
   )
   const _handleDelete = useCallback(() => {
-    console.log(comment)
     handleCommentDelete(comment._id)
-  }, [comment, handleCommentDelete])
+  }, [comment._id, handleCommentDelete])
   return (
     <Box style={{display: 'flex', alignItems: 'center', marginTop: '8px'}}>
       <Box>

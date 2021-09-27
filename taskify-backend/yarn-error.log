@@ -2,7 +2,7 @@ Arguments:
   /usr/bin/node /usr/share/yarn/bin/yarn.js start
 
 PATH: 
-  /home/tp1/Desktop/mohitPractice/trelloClone/nodejs-ts-template/node_modules/.bin:/tmp/yarn--1631526956363-0.00020482274798383493:/home/tp1/Desktop/mohitPractice/trelloClone/nodejs-ts-template/node_modules/.bin:/home/tp1/.config/yarn/link/node_modules/.bin:/home/tp1/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/tp1/Desktop/mohitPractice/taskify/taskify-backend/node_modules/.bin:/tmp/yarn--1632737764642-0.2375091061726493:/home/tp1/Desktop/mohitPractice/taskify/taskify-backend/node_modules/.bin:/home/tp1/.config/yarn/link/node_modules/.bin:/home/tp1/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
   1.22.5
@@ -14,17 +14,17 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EIO: i/o error, write
-      at writeSync (fs.js:679:3)
-      at SyncWriteStream._write (internal/fs/sync_write_stream.js:24:3)
+  Error: write EIO
+      at afterWriteDispatched (internal/stream_base_commons.js:156:25)
+      at writeGeneric (internal/stream_base_commons.js:147:3)
+      at WriteStream.Socket._writeGeneric (net.js:787:11)
+      at WriteStream.Socket._write (net.js:799:8)
       at doWrite (_stream_writable.js:403:12)
       at writeOrBuffer (_stream_writable.js:387:5)
-      at SyncWriteStream.Writable.write (_stream_writable.js:318:11)
-      at ConsoleReporter._log (/usr/share/yarn/lib/cli.js:96770:17)
-      at ConsoleReporter.log (/usr/share/yarn/lib/cli.js:96758:10)
-      at ConsoleReporter.command (/usr/share/yarn/lib/cli.js:96787:10)
-      at /usr/share/yarn/lib/cli.js:34545:16
-      at Generator.next (<anonymous>)
+      at WriteStream.Writable.write (_stream_writable.js:318:11)
+      at Object.clearLine (readline.js:1251:17)
+      at clearLine (/usr/share/yarn/lib/cli.js:49658:12)
+      at ConsoleReporter._log (/usr/share/yarn/lib/cli.js:96769:43)
 
 npm manifest: 
   {
